@@ -7,8 +7,11 @@ export default function Navbar() {
         <nav className="flex justify-between px-8 py-4 bg-white items-center rounded-r mb-4 border-gray-200 border ">
             <div className=" text-gray-900 text-2xl">Team Seven</div>
             <div className="flex items-center justify-around rounded-md bg-neutral-50 border-gray-400 py-2 px-4 min-w-96">
-                <label htmlFor="search" className=" cursor-pointer">
-                    <img src="/icon/searchnormal1.svg" />
+                <label htmlFor="search" className="cursor-text">
+                    <i
+                        aria-hidden
+                        className="fa-solid fa-magnifying-glass text-gray-400"
+                    />
                 </label>
                 <input
                     type="text"
