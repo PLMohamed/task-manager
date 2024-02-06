@@ -3,6 +3,10 @@ import { Users } from "@/models/schema";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 
+/**
+ * @param {Request} request
+ * @returns {NextResponse}
+ */
 export const POST = async (request) => {
     const { email, first_name, last_name, password } = request.body;
     const emialRegex = /^[a-zA-Zéèç0-9+_. ]+@[a-zA-Zéèç0-9+_.]+.[a-zA-Z]{2,4}$/;

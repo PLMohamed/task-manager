@@ -46,14 +46,8 @@ export default function Signup() {
                 />
             </section>
             <section className="flex flex-col gap-4 w-full">
-                <button
-                    type="submit"
-                    className={`bg-blue-500 text-white rounded-md py-2 ${poppins.className}
-                    hover:bg-blue-600 w-full transition-all duration-300
-                     active:bg-blue-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500`}
-                >
-                    Sign up
-                </button>
+                <ButtonSubmit className={poppins.className} title={"Sign up"} />
+
                 <p
                     className={`text-xs text-neutral-400 ${poppins.className} text-center`}
                 >
