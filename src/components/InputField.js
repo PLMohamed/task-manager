@@ -1,17 +1,40 @@
+import { Poppins } from "next/font/google";
 import React from "react";
 
-export default function InputField({ type, name, placeholder }) {
+const poppins = Poppins({ weight: ["400", "500"], subsets: ["latin"] });
+
+export default function InputField({
+    type,
+    name,
+    placeholder,
+    className,
+    error,
+}) {
     return (
-        <div>
-            <label htmlFor={name} className="sr-only">
-                {name}
+        <div className={`flex flex-col ${className}`}>
+            <label
+                htmlFor={name}
+                className={`${poppins.className} font-medium`}
+            >
+                {placeholder}
             </label>
             <input
+                id={name}
                 type={type}
                 name={name}
-                placeholder={placeholder}
-                className=""
+                className={`border rounded-md px-4 py-2 
+                focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500
+                ${poppins.className}
+                ${error ? "border-red-500" : "border-gray-400"}`}
             />
+            {error && (
+                <span
+                    className={`text-red-500 text-sm
+                    ${poppins.className}`}
+                >
+                    {error}
+                </span>
+            )}
         </div>
     );
 }
