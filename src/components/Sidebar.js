@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 
 const roboto = Roboto({ weight: ["500", "700"], subsets: ["latin"] });
 
+/**
+ * @returns {JSX.Element}
+ */
 export default function Sidebar() {
     const { pathname } = useRouter();
     return (

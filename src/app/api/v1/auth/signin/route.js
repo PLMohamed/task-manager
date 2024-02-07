@@ -72,7 +72,7 @@ export const POST = async (request) => {
 
         const cookie = serialize("token", token, {
             httpOnly: true,
-            secure: true,
+            secure: process.env.NODE_ENV === "production" ? true : false,
             sameSite: "strict",
             expires: new Date(Date.now() + 8 * 60 * 60 * 1000),
             maxAge: 8 * 60 * 60,

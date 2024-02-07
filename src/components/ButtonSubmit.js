@@ -2,6 +2,10 @@
 
 import { useFormStatus } from "react-dom";
 
+/**
+ * @param {{ title: string, className: string }} props
+ * @returns {JSX.Element}
+ */
 export default function ButtonSubmit({ title, className }) {
     const { pending } = useFormStatus();
 

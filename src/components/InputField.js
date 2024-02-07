@@ -3,6 +3,16 @@ import React from "react";
 
 const poppins = Poppins({ weight: ["400", "500"], subsets: ["latin"] });
 
+/**
+ * @param {{
+ * type: string;
+ * name: string;
+ * placeholder: string;
+ * className: string;
+ * error: string;
+ * }} props
+ * @returns {JSX.Element}
+ */
 export default function InputField({
     type,
     name,

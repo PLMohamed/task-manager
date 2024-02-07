@@ -2,6 +2,9 @@ import { Roboto } from "next/font/google";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
+/**
+ * @returns {JSX.Element}
+ */
 export default function Navbar() {
     return (
         <nav className="flex justify-between px-8 py-4 bg-white items-center rounded-r mb-4 border-gray-200 border ">
