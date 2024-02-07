@@ -1,8 +1,12 @@
-import { isConnected } from "./middle/logged";
 import { NextResponse } from "next/server";
+import { isConnected } from "./middlewares/logged";
 
-const { AUTH_PAGES } = process.env;
-const isAuthPages = (url) => AUTH_PAGES.some((page) => page.startsWith(url));
+const { CONNECTED_PAGES, AUTH_PAGES } = process.env;
+const isConnectedPages = (url) =>
+    CONNECTED_PAGES.split(",").some((page) => page.startsWith(url));
+
+const isAuthPages = (url) =>
+    AUTH_PAGES.split(",").some((page) => page.startsWith(url));
 
 /**
  * @param {NextRequest} request
@@ -10,7 +14,8 @@ const isAuthPages = (url) => AUTH_PAGES.some((page) => page.startsWith(url));
  */
 export default async function middleware(request) {
     const { url, nextUrl } = request;
-    const isAuthPageRequested = isAuthPages(nextUrl.pathname);
+    const isAuthPageRequested = isConnectedPages(nextUrl.pathname);
+    const isAuthPage = isAuthPages(nextUrl.pathname);
 
     if (isAuthPageRequested) {
         const isConnectedUser = await isConnected(request);
@@ -21,10 +26,9 @@ export default async function middleware(request) {
 
         return NextResponse.next();
     }
-
-    if (nextUrl.pathname.startsWith("/auth")) {
+    if (isAuthPage) {
         const isConnectedUser = await isConnected(request);
-        if (!isConnectedUser)
+        if (isConnectedUser)
             return NextResponse.redirect(new URL(`/dashboard`, url));
 
         return NextResponse.next();

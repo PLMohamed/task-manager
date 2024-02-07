@@ -1,8 +1,5 @@
+import { verifyJwtToken } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import { verify } from "jsonwebtoken";
-import { config } from "dotenv";
-
-config();
 
 const { JWT_SECRET_KEY } = process.env;
 
@@ -14,8 +11,8 @@ export async function isConnected(request) {
     const { cookies } = request;
     const { value: token } = cookies.get("token") ?? { value: null };
 
-    const verifiedToken = token && (await verify(token, JWT_SECRET_KEY));
-
+    if (!token) return false;
+    const verifiedToken = await verifyJwtToken(token);
     if (!verifiedToken) return false;
 
     return true;
