@@ -1,4 +1,8 @@
 "use client";
+import { Poppins } from "next/font/google";
+import Link from "next/link";
+
+const poppins = Poppins({ weight: ["400", "500", "700"], subsets: ["latin"] });
 
 export default function LandingPage() {
     return (
@@ -20,20 +24,20 @@ export default function LandingPage() {
                 with ease.
             </p>
             <div className="mx-auto flex w-fit flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <button
+                <Link
+                    href={"/auth/signup"}
                     className="rounded-md border-0 bg-blue-500 px-12 py-2 text-base text-white shadow-lg shadow-blue-300 transition 
                     hover:bg-blue-600 hover:shadow-blue-400 "
-                    onClick={() => push("/auth/signup")}
                 >
                     Register now
-                </button>
-                <button
+                </Link>
+                <Link
+                    href={"/auth/signin"}
                     className="rounded-md border-0 bg-slate-300 px-12 py-2 text-base text-dark-900 shadow-lg shadow-slate-300 transition 
                     hover:bg-slate-400 hover:shadow-slate-400 "
-                    onClick={() => push("/auth/signin")}
                 >
                     Login
-                </button>
+                </Link>
             </div>
         </section>
     );

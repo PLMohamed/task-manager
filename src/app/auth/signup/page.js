@@ -15,6 +15,7 @@ const poppins = Poppins({ weight: ["400", "500", "700"], subsets: ["latin"] });
 export default function Signup() {
     const [error, setError] = useState(undefined);
     const { push } = useRouter();
+
     async function sendForm(e) {
         e.preventDefault();
         const formData = new FormData(e.target);
