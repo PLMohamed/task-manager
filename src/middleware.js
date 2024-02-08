@@ -16,12 +16,15 @@ export default async function middleware(request) {
     const { url, nextUrl } = request;
     const isAuthPageRequested = isConnectedPages(nextUrl.pathname);
     const isAuthPage = isAuthPages(nextUrl.pathname);
+    const isIndexPage = nextUrl.pathname === "/";
+
+    if (isIndexPage) return NextResponse.next();
 
     if (isAuthPageRequested) {
         const isConnectedUser = await isConnected(request);
         if (!isConnectedUser)
             return NextResponse.redirect(
-                new URL(`/login?next=${nextUrl.pathname}`, url)
+                new URL(`/auth/signin?next=${nextUrl.pathname}`, url)
             );
 
         return NextResponse.next();
