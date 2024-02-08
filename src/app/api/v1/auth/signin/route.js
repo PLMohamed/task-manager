@@ -62,9 +62,6 @@ export const POST = async (request) => {
         const token = jwt.sign(
             {
                 id: user[0].id,
-                email: user[0].email,
-                first_name: user[0].first_name,
-                last_name: user[0].last_name,
             },
             JWT_SECRET_KEY,
             { expiresIn: "8h" }

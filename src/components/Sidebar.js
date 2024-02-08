@@ -8,7 +8,7 @@ const roboto = Roboto({ weight: ["500", "700"], subsets: ["latin"] });
 /**
  * @returns {JSX.Element}
  */
-export default function Sidebar() {
+export default function Sidebar({ id, first_name, last_name, email, image }) {
     const { pathname } = useRouter();
     return (
         <nav
@@ -114,7 +114,7 @@ export default function Sidebar() {
                     <li>
                         <Link
                             href="/settings"
-                            className="flex justify-between items-center px-3.5 py-2.5 "
+                            className="flex justify-between items-center px-3.5 py-2.5  "
                         >
                             <div className=" grid gap-4 items-center grid-cols-Split20_80 w-8/12 min-w-0 ">
                                 <i
@@ -137,14 +137,14 @@ export default function Sidebar() {
                             className="flex justify-between group-hover:px-3.5 gap-1"
                         >
                             <img src="/pfp.png" />
-                            <div className=" flex-col flex opacity-0 group-hover:opacity-100 ">
+                            <div className=" flex-col flex opacity-0 group-hover:opacity-100 truncate hover:text-clip">
                                 <span
-                                    className={` text-gray-900 text-base ${roboto.className} font-medium`}
+                                    className={` text-gray-900 text-base ${roboto.className} font-medium `}
                                 >
-                                    Username
+                                    {first_name} {last_name}
                                 </span>
-                                <span className="text-gray-400 text-sm">
-                                    Email@gmail.com
+                                <span className="text-gray-400 text-sm ">
+                                    {email}
                                 </span>
                             </div>
                         </Link>
